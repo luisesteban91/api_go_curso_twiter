@@ -10,7 +10,7 @@ import (
 
 /*MongoCon es el objecto de conexion a la BD*/
 var MongoCon = ConnectDB()
-var clientOptions = options.Client().ApplyURI("mongodb+srv://dbLecch:1jIcM6SxWVgy9Ys7@cluster0.w4xh2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+var clientOptions = options.Client().ApplyURI("mongodb+srv://dbLecch:<password>@cluster0.w4xh2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
 /*
 * ConnectBD es la funcion para conectar con la BD
