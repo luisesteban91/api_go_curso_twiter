@@ -17,7 +17,7 @@ var IDUsuario string
 
 /*ProcesarToken estraer valores del token*/
 func ProcesarToken(miToken string) (*models.Claim, bool, string, error) {
-	miClave := []byte("MasterdelDesarrollo")
+	miClave := []byte("MastersDelDesarrollo")
 	claims := &models.Claim{}
 
 	splitToken := strings.Split(miToken, "Bearer")

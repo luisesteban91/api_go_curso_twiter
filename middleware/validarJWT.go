@@ -8,7 +8,7 @@ import (
 
 func ValidateJWT(next http.HandlerFunc) http.HandlerFunc {
 	return func(rw http.ResponseWriter, r *http.Request) {
-		_, _, _, err := routers.ProcesarToken(r.Header.Get("Autorization"))
+		_, _, _, err := routers.ProcesarToken(r.Header.Get("Authorization"))
 		if err != nil {
 			http.Error(rw, "Token no valido ! "+err.Error(), http.StatusBadRequest)
 			return

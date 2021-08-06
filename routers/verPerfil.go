@@ -10,7 +10,7 @@ import (
 /*MiPerfil */
 func MiPerfil(rw http.ResponseWriter, r *http.Request) {
 	ID := r.URL.Query().Get("id")
-	if len(ID) > 1 {
+	if len(ID) < 1 {
 		http.Error(rw, "Debe enviar el parámetro ID", http.StatusBadRequest)
 		return
 	}
