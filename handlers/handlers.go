@@ -10,6 +10,7 @@ import (
 	"github.com/luisesteban91/curso_go_api_twiter/routers"
 	"github.com/luisesteban91/curso_go_api_twiter/routers/avatar"
 	"github.com/luisesteban91/curso_go_api_twiter/routers/banner"
+	"github.com/luisesteban91/curso_go_api_twiter/routers/relacion"
 	"github.com/luisesteban91/curso_go_api_twiter/routers/tweet"
 	"github.com/rs/cors"
 )
@@ -30,6 +31,9 @@ func Manejadores() {
 	router.HandleFunc("/getAvatar", middleware.ChequeoBD(avatar.UploadAvatar)).Methods("GET")
 	router.HandleFunc("/uploadBanner", middleware.ChequeoBD(middleware.ValidateJWT(banner.UploadBanner))).Methods("POST")
 	router.HandleFunc("/getBanner", middleware.ChequeoBD(banner.UploadBanner)).Methods("GET")
+
+	//Relacion
+	router.HandleFunc("/crearRelacion", middleware.ChequeoBD(middleware.ValidateJWT(relacion.CrearRelacion))).Methods("POST")
 
 	PORT := os.Getenv("PORT") //obetener variable de entorno
 
