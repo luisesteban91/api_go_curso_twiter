@@ -8,6 +8,8 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/luisesteban91/curso_go_api_twiter/middleware"
 	"github.com/luisesteban91/curso_go_api_twiter/routers"
+	"github.com/luisesteban91/curso_go_api_twiter/routers/avatar"
+	"github.com/luisesteban91/curso_go_api_twiter/routers/banner"
 	"github.com/luisesteban91/curso_go_api_twiter/routers/tweet"
 	"github.com/rs/cors"
 )
@@ -23,6 +25,11 @@ func Manejadores() {
 	router.HandleFunc("/tweet", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Create))).Methods("POST")
 	router.HandleFunc("/readTweets", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Leer))).Methods("GET")
 	router.HandleFunc("/deleteTweet", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Delete))).Methods("DELETE")
+
+	router.HandleFunc("/uploadAvatar", middleware.ChequeoBD(middleware.ValidateJWT(avatar.UploadAvatar))).Methods("POST")
+	router.HandleFunc("/getAvatar", middleware.ChequeoBD(avatar.UploadAvatar)).Methods("GET")
+	router.HandleFunc("/uploadBanner", middleware.ChequeoBD(middleware.ValidateJWT(banner.UploadBanner))).Methods("POST")
+	router.HandleFunc("/getBanner", middleware.ChequeoBD(banner.UploadBanner)).Methods("GET")
 
 	PORT := os.Getenv("PORT") //obetener variable de entorno
 
