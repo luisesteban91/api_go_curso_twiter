@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/luisesteban91/curso_go_api_twiter/middleware"
 	"github.com/luisesteban91/curso_go_api_twiter/routers"
+	"github.com/luisesteban91/curso_go_api_twiter/routers/tweet"
 	"github.com/rs/cors"
 )
 
@@ -18,6 +19,10 @@ func Manejadores() {
 	router.HandleFunc("/registro", middleware.ChequeoBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/login", middleware.ChequeoBD(routers.Login)).Methods("POST")
 	router.HandleFunc("/miperfil", middleware.ChequeoBD(middleware.ValidateJWT(routers.MiPerfil))).Methods("GET")
+	router.HandleFunc("/editarPerfil", middleware.ChequeoBD(middleware.ValidateJWT(routers.ModificarPerfil))).Methods("PUT")
+	router.HandleFunc("/tweet", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Create))).Methods("POST")
+	router.HandleFunc("/readTweets", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Leer))).Methods("GET")
+	router.HandleFunc("/deleteTweet", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Delete))).Methods("DELETE")
 
 	PORT := os.Getenv("PORT") //obetener variable de entorno
 
