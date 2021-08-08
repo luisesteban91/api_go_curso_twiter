@@ -18,7 +18,7 @@ func Create(t models.CrearTweet) (string, bool, error) {
 	col := db.Collection("tweet")
 
 	registro := bson.M{
-		"usserid": t.UserId,
+		"userid":  t.UserId,
 		"mensaje": t.Mensaje,
 		"fecha":   t.Fecha,
 	}

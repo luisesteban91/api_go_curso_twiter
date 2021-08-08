@@ -21,6 +21,7 @@ func Manejadores() {
 	router.HandleFunc("/miperfil", middleware.ChequeoBD(middleware.ValidateJWT(routers.MiPerfil))).Methods("GET")
 	router.HandleFunc("/editarPerfil", middleware.ChequeoBD(middleware.ValidateJWT(routers.ModificarPerfil))).Methods("PUT")
 	router.HandleFunc("/tweet", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Create))).Methods("POST")
+	router.HandleFunc("/readTweets", middleware.ChequeoBD(middleware.ValidateJWT(tweet.Leer))).Methods("GET")
 
 	PORT := os.Getenv("PORT") //obetener variable de entorno
 
