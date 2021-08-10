@@ -34,6 +34,7 @@ func Manejadores() {
 
 	//Relacion
 	router.HandleFunc("/crearRelacion", middleware.ChequeoBD(middleware.ValidateJWT(relacion.CrearRelacion))).Methods("POST")
+	router.HandleFunc("/deleteRelacion", middleware.ChequeoBD(middleware.ValidateJWT(relacion.BorrarRelacion))).Methods("DELETE")
 
 	PORT := os.Getenv("PORT") //obetener variable de entorno
 
