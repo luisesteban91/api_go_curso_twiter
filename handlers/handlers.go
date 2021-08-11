@@ -12,6 +12,7 @@ import (
 	"github.com/luisesteban91/curso_go_api_twiter/routers/banner"
 	"github.com/luisesteban91/curso_go_api_twiter/routers/relacion"
 	"github.com/luisesteban91/curso_go_api_twiter/routers/tweet"
+	"github.com/luisesteban91/curso_go_api_twiter/routers/usuario"
 	"github.com/rs/cors"
 )
 
@@ -36,6 +37,9 @@ func Manejadores() {
 	router.HandleFunc("/crearRelacion", middleware.ChequeoBD(middleware.ValidateJWT(relacion.CrearRelacion))).Methods("POST")
 	router.HandleFunc("/deleteRelacion", middleware.ChequeoBD(middleware.ValidateJWT(relacion.BorrarRelacion))).Methods("DELETE")
 	router.HandleFunc("/consultaRelacion", middleware.ChequeoBD(middleware.ValidateJWT(relacion.ConsultarRelacion))).Methods("GET")
+
+	router.HandleFunc("/listarUsuarios", middleware.ChequeoBD(middleware.ValidateJWT(usuario.ListarUsuarios))).Methods("GET")
+	router.HandleFunc("/listarTweetsFollows", middleware.ChequeoBD(middleware.ValidateJWT(tweet.LeerTweetsSeguidores))).Methods("GET")
 
 	PORT := os.Getenv("PORT") //obetener variable de entorno
 
