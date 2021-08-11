@@ -39,6 +39,7 @@ func Manejadores() {
 	router.HandleFunc("/consultaRelacion", middleware.ChequeoBD(middleware.ValidateJWT(relacion.ConsultarRelacion))).Methods("GET")
 
 	router.HandleFunc("/listarUsuarios", middleware.ChequeoBD(middleware.ValidateJWT(usuario.ListarUsuarios))).Methods("GET")
+	router.HandleFunc("/listarTweetsFollows", middleware.ChequeoBD(middleware.ValidateJWT(tweet.LeerTweetsSeguidores))).Methods("GET")
 
 	PORT := os.Getenv("PORT") //obetener variable de entorno
 
